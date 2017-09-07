@@ -1,15 +1,15 @@
 <template>
-  <div class="hello">
-    <h1 class="blue">{{ msg }}</h1>
+  <div>
+    <h1 class="header">{{ msg }}</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'hello',
+  name: 'home',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to the NBA Player Comparison Tool'
     }
   }
 }
@@ -17,7 +17,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.blue{
-  color:blue;
+
+.header {
+  color: blue;
 }
+
 </style>

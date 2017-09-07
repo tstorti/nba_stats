@@ -1,15 +1,27 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
+import Home from '@/components/Home'
+import Profile from '@/components/Profile'
+import PlayerStats from '@/components/PlayerStats'
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Hello',
-      component: Hello
-    }
-  ]
+	routes: [
+		{
+			path: '/',
+			name: 'Home',
+			component: Home
+		},
+		{
+			path: '/profile',
+			name: 'Profile',
+			component: Profile
+		},
+		{
+			path: '/playerstats',
+			name: 'PlayerStats',
+			component: PlayerStats
+		},
+	]
 })
