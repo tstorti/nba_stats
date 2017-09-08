@@ -1,30 +1,32 @@
 <template>
 	<div>
-		<h1>{{ msg }}</h1>
+		<!-- pass the msg and data from api call to the RandomPlayer component -->
+		<random :message="msg" :playerdata="cumulative2016"></random>
 	</div>
 </template>
 
 <script>
 
+import RandomPlayer from '@/components/RandomPlayer'
 var axios = require("axios");
 
-export default {
-	name: 'playerData',
+export default {	
+	name: 'playerStats',
+	components: {
+		'random': RandomPlayer
+	},
+
 	data () {
 		return {
-			playerData:{},
+			cumulative2016:{},
 			msg:"Stats Component"
 		}
 	},
+	//run fetchData method on page load
 	created() {
 		this.fetchData()
     },
-
-    watch: {
-		'$route': 'fetchData'
-    },
 	methods: {
-
 		fetchData() {
 			var url = "https://api.mysportsfeeds.com/v1.1/pull/nba/2016-2017-regular/cumulative_player_stats.json";
 			var user = "";
@@ -38,12 +40,12 @@ export default {
 				},
 			})
 			.then((res) => {
-				console.log(res.data)
+				this.cumulative2016=res.data;
 			})
 			.catch((err) => {
 				console.log(err)
 			})
-		}
+		},
     }
 }
 </script>
