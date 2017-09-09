@@ -14,8 +14,6 @@
 
 <script>
 
-var axios = require("axios");
-
 export default {
 	name: 'randomPlayer',
 	props:["playerdata", "message"],
