@@ -3,7 +3,7 @@
 		<!-- <img src="./assets/logo.png"> -->
 		<router-link to="/">Home</router-link>
 		<router-link to="/profile">Profile</router-link>
-		<router-link to="/playerstats">Random Player Stats</router-link>
+		<router-link to="/stats">Player Stats</router-link>
 		<router-view></router-view>
 	</div>
 </template>

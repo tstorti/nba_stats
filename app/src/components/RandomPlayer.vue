@@ -1,6 +1,5 @@
 <template>
-	<div>
-		<h1>{{message}}</h1>
+	<div class="random">
         <h3>{{ header }}</h3>
 		<div>
 			<div>Stats for: {{lastName}},{{firstName}}</div>
@@ -61,5 +60,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.random{
+	width:300px;
+	padding:20px;
+	margin:10px;
+	border: 2px solid black;
+	border-radius: 10px;
+}
 
 </style>

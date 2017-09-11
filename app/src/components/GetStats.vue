@@ -2,6 +2,7 @@
 	<div>
 		<!-- pass the msg and data from api call to the RandomPlayer component -->
 		<random :message="msg" :playerdata="cumulative2016"></random>
+		<!-- pass the msg and data from api call to the RandomPlayer component -->
 		<search :playerdata="cumulative2016"></search>
 	</div>
 </template>
@@ -14,7 +15,7 @@ import PlayerSearch from '@/components/PlayerSearch';
 var axios = require("axios");
 
 export default {	
-	name: 'playerStats',
+	name: 'GetStats',
 	components: {
 		'random': RandomPlayer,
 		"search": PlayerSearch,
