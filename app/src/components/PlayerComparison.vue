@@ -4,7 +4,7 @@
 			<button v-on:click="displayPlayer(playerdata, playerID, 0)">Add Player 1</button>
 			<button v-on:click="displayPlayer(playerdata, playerID, 1)">Add Player 2</button>
 		</div>
-		<div class="random">
+		<div class="player-container">
 			<div>Player1</div>
 			<div>Stats for: {{players[0].lastName}},{{players[0].firstName}}</div>
 			<div>{{players[0].position}} for {{players[0].team}}</div>
@@ -12,7 +12,7 @@
 			<div>PPG {{players[0].pointsPerGame}}</div>
 			<div>Overall +/- {{players[0].plusMinus}}</div>
 		</div>
-		<div class="random">
+		<div class="player-container">
 			<div>Player2</div>
 			<div>Stats for: {{players[1].lastName}},{{players[1].firstName}}</div>
 			<div>{{players[1].position}} for {{players[1].team}}</div>
@@ -75,7 +75,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-.random{
+.player-container{
 	width:300px;
 	padding:20px;
 	margin:10px;

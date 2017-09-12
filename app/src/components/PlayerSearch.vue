@@ -11,16 +11,24 @@
   			</basic-select>
 		</div>
 		<div> Results</div>
+		<!-- detailed breakdown of player stats with percentiles -->
+		<player-detailed :playerdata="cumulative2016" :playerID="item.id"></player-detailed>
+		<!-- shot logs for a single player -->
+		<shot-logs :teamID="item.team" :playerID="item.id"></shot-logs>
+		<!-- side-by-side comparison of two player stats -->
 		<player-comparison :playerdata="cumulative2016" :playerID="item.id"></player-comparison>
 	</div>
 </template>
 
 <script>
 
-//see vue-search-select npm package
+//see vue-search-select npm package - used for autofill on user search term
 import { BasicSelect } from 'vue-search-select';
 
+//custom components
 import PlayerComparison from '@/components/PlayerComparison';
+import PlayerDetailed from '@/components/PlayerDetailed';
+import GetShotLogs from '@/components/GetShotLogs';
 
 export default {
 	name: 'playerSearch',
@@ -28,6 +36,8 @@ export default {
 	components: {
 		"basic-select": BasicSelect,
 		"player-comparison": PlayerComparison,
+		"player-detailed":PlayerDetailed,
+		"shot-logs":GetShotLogs,
     },
     data () {
 		return {
@@ -41,12 +51,13 @@ export default {
 			}
 		}
     },
-    //once data loads from stats component, display player data
+    
     watch: {
-        playerdata :function(){
+		//once data loads from stats component, display player data
+        playerdata: function(){
 			this.playerList(this.playerdata);
 			this.cumulative2016 = this.playerdata;
-        }  
+        }
     },
     
     methods: {
@@ -57,7 +68,7 @@ export default {
 			//set up array of search terms to be used for autocomplete
 			for (var i=0;i<this.playerCount;i++){
 				var name = data.cumulativeplayerstats.playerstatsentry[i].player.FirstName +" " + data.cumulativeplayerstats.playerstatsentry[i].player.LastName;
-				var searchObject = {"id":data.cumulativeplayerstats.playerstatsentry[i].player.ID, "text":name};
+				var searchObject = {"id":data.cumulativeplayerstats.playerstatsentry[i].player.ID, "text":name, "team":data.cumulativeplayerstats.playerstatsentry[i].team.Abbreviation};
 				this.options.push(searchObject);
 			}
 			
@@ -71,8 +82,7 @@ export default {
 		selectOption () {
 			// select option from parent component
 			this.item = this.options[0]
-		}
-		
+		}	
     }
 }
 </script>
